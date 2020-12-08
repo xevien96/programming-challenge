@@ -8,8 +8,19 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 
+/**
+ * Reader class for football objects.
+ *
+ * @author Johann Helbig
+ */
 public class FootballReader implements Reader {
 
+    /**
+     * Method for reading football objects from a .csv file.
+     *
+     * @param pathToFile Path to the .csv file
+     * @return List of football objects read from the .csv file
+     */
     @Override
     public List<Football> readFromCsv(String pathToFile) {
         File footballFile = new File(pathToFile);

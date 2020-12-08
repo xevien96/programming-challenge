@@ -2,6 +2,11 @@ package de.exxcellent.challenge.model;
 
 import com.opencsv.bean.CsvBindByName;
 
+/**
+ * This class represents the weather object from the .csv file.
+ *
+ * @author Johann Helbig
+ */
 public class Weather {
 
     @CsvBindByName(column = "Day")
@@ -50,6 +55,11 @@ public class Weather {
                 '}';
     }
 
+    /**
+     * This method calculates the difference between the minimal and maximal temperature on a day.
+     *
+     * @return absolute difference between the minimal and maximal temperature on a day
+     */
     public int temperatureSpread() {
         return Math.abs(maxTemperature - minTemperature);
     }

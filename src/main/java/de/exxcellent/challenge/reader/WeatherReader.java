@@ -8,8 +8,19 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 
+/**
+ * Reader class for weather objects.
+ *
+ * @author Johann Helbig
+ */
 public class WeatherReader implements Reader {
 
+    /**
+     * Method for reading weather objects from a .csv file.
+     *
+     * @param pathToFile Path to the .csv file
+     * @return List of weather objects read from the .csv file
+     */
     @Override
     public List<Weather> readFromCsv(String pathToFile) {
         File weatherFile = new File(pathToFile);

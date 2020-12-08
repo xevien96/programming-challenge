@@ -2,6 +2,11 @@ package de.exxcellent.challenge.model;
 
 import com.opencsv.bean.CsvBindByName;
 
+/**
+ * This class that represents the football object from the .csv file.
+ *
+ * @author Johann Helbig
+ */
 public class Football {
     @CsvBindByName(column = "Team")
     private String team;
@@ -20,6 +25,11 @@ public class Football {
     @CsvBindByName(column = "Points")
     private int points;
 
+    /**
+     * This method calculates the difference between goals and goals allowed.
+     *
+     * @return absolute difference between goals and goals allowed
+     */
     public int goalsSpread() {
         return Math.abs(goals - goalsAllowed);
     }
