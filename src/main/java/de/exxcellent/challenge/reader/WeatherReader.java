@@ -8,9 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 
-public class WeatherReader {
+public class WeatherReader implements Reader {
 
-    public static List<Weather> readFromCsv(String pathToFile) {
+    public List<Weather> readFromCsv(String pathToFile) {
         File weatherFile = new File(pathToFile);
         try {
             List<Weather> weatherList = new CsvToBeanBuilder<Weather>(new FileReader(weatherFile))
