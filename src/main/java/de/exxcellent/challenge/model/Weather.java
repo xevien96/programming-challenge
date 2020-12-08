@@ -49,4 +49,8 @@ public class Weather {
                 ", mn=" + mn +
                 '}';
     }
+
+    public int temperatureSpread() {
+        return Math.abs(maxTemperature - minTemperature);
+    }
 }

@@ -3,7 +3,10 @@ package de.exxcellent.challenge;
 import de.exxcellent.challenge.model.Weather;
 import de.exxcellent.challenge.reader.WeatherReader;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * The entry class for your solution. This class is only aimed as starting point and not intended as baseline for your software
@@ -23,7 +26,10 @@ public final class App {
         WeatherReader weatherReader = new WeatherReader();
         List<Weather> weatherList = weatherReader.readFromCsv("src/main/resources/de/exxcellent/challenge/weather.csv");
 
-        String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
+        Weather weatherWithSmallestTempSpread = weatherList.stream().min(Comparator.comparing
+                (Weather::temperatureSpread)).orElseThrow(NoSuchElementException::new);
+
+        String dayWithSmallestTempSpread = weatherWithSmallestTempSpread.toString();     // Your day analysis function call …
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
 
         String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
