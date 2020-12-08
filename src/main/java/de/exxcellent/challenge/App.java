@@ -1,9 +1,10 @@
 package de.exxcellent.challenge;
 
+import de.exxcellent.challenge.model.Football;
 import de.exxcellent.challenge.model.Weather;
+import de.exxcellent.challenge.reader.FootballReader;
 import de.exxcellent.challenge.reader.WeatherReader;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -32,7 +33,13 @@ public final class App {
         String dayWithSmallestTempSpread = weatherWithSmallestTempSpread.toString();     // Your day analysis function call …
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
 
-        String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
+        FootballReader footballReader = new FootballReader();
+        List<Football> footballList = footballReader.readFromCsv("src/main/resources/de/exxcellent/challenge/football.csv");
+
+        Football footballWithSmallestGoalSpread = footballList.stream().min(Comparator.comparing(Football::goalsSpread))
+                .orElseThrow(NoSuchElementException::new);
+
+        String teamWithSmallestGoalSpread = footballWithSmallestGoalSpread.toString(); // Your goal analysis function call …
         System.out.printf("Team with smallest goal spread       : %s%n", teamWithSmallestGoalSpread);
     }
 }
